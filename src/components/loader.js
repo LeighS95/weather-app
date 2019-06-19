@@ -1,14 +1,45 @@
 import React from 'react';
+import { Spring, animated } from 'react-spring';
 
-const Loader = (props) => {
+const Loader = () => {
     return (
         <div style={container}>
-            <span style={circle}></span>
+            <Spring 
+                config={{ duration: 10000 }}
+                from={{ 
+                    position: 'absolute',
+                    top: '30%',
+                    left: '40%',
+                    height: '75px',
+                    width: '75px',
+                    borderRadius: '50%',
+                    border: '10px solid #f3f3f3',
+                    borderTop: '10px solid #3498db',
+                    borderRight: '10px solid #3498db',
+                    borderBottom: '10px solid #3498db',
+                    transform: 'rotate(0deg)' }}
+                to={{ 
+                    position: 'absolute',
+                    top: '30%',
+                    left: '40%',
+                    height: '75px',
+                    width: '75px',
+                    borderRadius: '50%',
+                    border: '10px solid #f3f3f3',
+                    borderTop: '10px solid #3498db',
+                    borderRight: '10px solid #3498db',
+                    borderBottom: '10px solid #3498db',
+                    transform: 'rotate(360deg)' }}
+                >
+                {props => (
+                    <animated.div style={props}>
+                        <div>{props.circle}</div>
+                    </animated.div>
+                )}
+            </Spring>
         </div>
     )
 }
-
-export default Loader;
 
 const container = {
     position: 'absolute',
@@ -19,19 +50,10 @@ const container = {
     backgroundColor: 'rgba(0,0,0,0.3)'
 }
 
+export default Loader;
 
-const circle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    height: '75px',
-    width: '75px',
-    borderRadius: '50%',
-    backgroundColor: 'none',
-    transform: 'translate(-50%, -50%)',
-    border: '10px solid #f3f3f3',
-    borderTop: '10px solid #3498db',
-    borderRight: '10px solid #3498db',
-    borderBottom: '10px solid #3498db',
-    animation: 'spin 2s linear infinite',
-}
+/**<div style={container}>
+                    <div style={props}>
+                        <div style={circle}></div>
+                    </div>
+                </div> */

@@ -1,11 +1,22 @@
-import React from 'react';
+import React from 'react'
 
 import Loader from './loader'
 
 const Weather = props => {
     if(props.isLoaded === false) {
         return (
-            <Loader />
+            <div style={container}>
+                <Loader />
+                <div style={dataStyle}>Location:</div>
+    
+                <div style={dataStyle}>Temperature:</div>
+    
+                <div style={dataStyle}>Humidity: </div>
+    
+                <div style={dataStyle}>Condition: </div>
+    
+                <div style={errorStyle}></div>
+            </div>
         )
     } else {
         return (
